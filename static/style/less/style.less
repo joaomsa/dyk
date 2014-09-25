@@ -1,3 +1,170 @@
+.box-sizing(@box-sizing) {
+    -webkit-box-sizing: @box-sizing;
+       -moz-box-sizing: @box-sizing;
+        -ms-box-sizing: @box-sizing;
+         -o-box-sizing: @box-sizing;
+            box-sizing: @box-sizing;
+}
+
+.filter(@filter) {
+    -webkit-filter: @filter;
+       -moz-filter: @filter;
+        -ms-filter: @filter;
+         -o-filter: @filter;
+            filter: @filter;
+}
+
+@desktop-width: 500px;
+@desktop-height: 500px;
+@btn-diameter: 80px;
+
+@padding-vertical: 30px;
+@padding-horizontal: 10px;
+@padding: @padding-vertical @padding-horizontal;
+
+@border-thickness: 5px;
+
+@color-black: rgba(9, 9, 9, 1);
+@color-white: rgba(255, 255, 255, 1);
+@color-blue: rgba(118, 167, 250, 1);
+@color-red: rgba(229, 115, 104, 1);
+@color-green: rgba(139, 196, 116, 1);
+
+*,
+*:after,
+*:before {
+    .box-sizing(border-box);
+}
+
+html,
 body {
-    background-color: salmon;
+    height: 100%;
+    width: 100%;
+    margin: auto;
+}
+
+.layer {
+    position: fixed;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+
+    &.layer-bg {
+        z-index: 1;
+        background-color: @color-black;
+        background-image: url(http://cdn.fansided.com/wp-content/blogs.dir/134/files/2014/07/chris-sale-mlb-all-star-game3-850x560.jpg);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center;
+        .filter(blur(2px));
+    }
+
+    &.layer-shadow {
+        z-index: 2;
+        background-color: fade(@color-black, 50%);
+    }
+
+    &.layer-content {
+        z-index: 9999;
+
+        padding: @padding;
+        overflow: auto;
+    }
+}
+
+.centered {
+    height: 100%;
+    max-width: @desktop-width;
+    margin: auto;
+}
+
+// Don't center on mobile, fill everything
+@media (min-width: @desktop-width) and (min-height: @desktop-height){
+    .centered {
+        height: auto;
+        position: absolute;
+        top: 20%;
+        margin-botton: 10px;
+        right: 0;
+        left: 0;
+    }
+}
+
+.container {
+    display: table;
+    height: 100%;
+    width: 100%;
+}
+
+header,
+article,
+footer {
+    display: table-row;
+    text-align: center;
+}
+
+.fact {
+    height: 100%;
+    display: table-cell;
+    vertical-align: middle;
+}
+
+h1,
+button {
+    font-family: 'Dancing Script', cursive;
+    font-weight: 700;
+}
+
+h2 {
+    font-family: 'EB Garamond', serif;
+    font-weight: bold; // force bold
+}
+
+h1 {
+    font-size: 42px;
+    margin: 0 0 @padding-vertical 0;
+    color: @color-blue;
+}
+
+h2 {
+    font-size: 25px;
+    letter-spacing: 1px;
+    line-height: 33px;
+    margin: 0 0 @padding-vertical 0;
+    color: @color-white;
+}
+
+.btn-variant(@color) {
+    color: @color;
+    border-color: @color;
+}
+
+.btn {
+    width: @btn-diameter;
+    height: @btn-diameter;
+    border-radius: 50%;
+    vertical-align: middle;
+
+    line-height: .5em;
+    font-size: 1.5em;
+    margin: @padding-horizontal;
+    margin-bottom: @padding-vertical / 2;
+
+    background-color: fade(@color-black, 50%);
+    color: @color-white;
+    border: @border-thickness solid @color-white;
+    box-shadow: 0 0 0 @border-thickness @color-white;
+
+    &.btn-nope {
+        .btn-variant(@color-red);
+    }
+
+    &.btn-info {
+        .btn-variant(@color-blue);
+    }
+
+    &.btn-yep {
+        .btn-variant(@color-green);
+    }
 }

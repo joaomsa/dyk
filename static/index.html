@@ -5,21 +5,33 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Did you know?</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="style/css/style.css">
+    <link href="http://fonts.googleapis.com/css?family=Dancing+Script:700|EB+Garamond" rel="stylesheet" type="text/css" />
+    <link href="style/css/style.css" rel="stylesheet" type="text/css" />
   </head>
+
   <body>
-    <header>
-      Did you know?
-    </header>
+    <div class="layer layer-bg"></div>
+    <div class="layer layer-shadow"></div>
+    <div class="layer layer-content">
+      <div class="centered">
+        <div class="container">
+          <header>
+            <h1>Did you know?</h1>
+          </header>
 
-    <article>
-      ... that Will White, the first Major League Baseball player to wear glasses, holds the records of 75 complete games and 680 innings pitched in one season?
-    </article>
+          <article>
+            <div class="fact">
+              <h2>... that Will White, the first Major League Baseball player to wear glasses, holds the records of 75 complete games and 680 innings pitched in one season?</h2>
+            </div>
+          </article>
 
-    <footer>
-      <button>Nope</button>
-      <button>Yep</button>
-    </footer>
-
+          <footer>
+            <button class="btn btn-nope">Don't care</button>
+            <button class="btn btn-info">Do go on...</button>
+            <button class="btn btn-yep">Neat, more?</button>
+          </footer>
+        </div>
+      </div>
+    </div>
   </body>
 </html>

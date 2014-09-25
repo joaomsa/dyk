@@ -1,3 +1,122 @@
+*,
+*:after,
+*:before {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  box-sizing: border-box;
+}
+html,
 body {
-  background-color: salmon;
+  height: 100%;
+  width: 100%;
+  margin: auto;
+}
+.layer {
+  position: fixed;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+}
+.layer.layer-bg {
+  z-index: 1;
+  background-color: #090909;
+  background-image: url(http://cdn.fansided.com/wp-content/blogs.dir/134/files/2014/07/chris-sale-mlb-all-star-game3-850x560.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  -webkit-filter: blur(2px);
+  -moz-filter: blur(2px);
+  -ms-filter: blur(2px);
+  -o-filter: blur(2px);
+  filter: blur(2px);
+}
+.layer.layer-shadow {
+  z-index: 2;
+  background-color: rgba(9, 9, 9, 0.5);
+}
+.layer.layer-content {
+  z-index: 9999;
+  padding: 30px 10px;
+  overflow: auto;
+}
+.centered {
+  height: 100%;
+  max-width: 500px;
+  margin: auto;
+}
+@media (min-width: 500px) and (min-height: 500px) {
+  .centered {
+    height: auto;
+    position: absolute;
+    top: 20%;
+    margin-botton: 10px;
+    right: 0;
+    left: 0;
+  }
+}
+.container {
+  display: table;
+  height: 100%;
+  width: 100%;
+}
+header,
+article,
+footer {
+  display: table-row;
+  text-align: center;
+}
+.fact {
+  height: 100%;
+  display: table-cell;
+  vertical-align: middle;
+}
+h1,
+button {
+  font-family: 'Dancing Script', cursive;
+  font-weight: 700;
+}
+h2 {
+  font-family: 'EB Garamond', serif;
+  font-weight: bold;
+}
+h1 {
+  font-size: 42px;
+  margin: 0 0 30px 0;
+  color: #76a7fa;
+}
+h2 {
+  font-size: 25px;
+  letter-spacing: 1px;
+  line-height: 33px;
+  margin: 0 0 30px 0;
+  color: #ffffff;
+}
+.btn {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  vertical-align: middle;
+  line-height: .5em;
+  font-size: 1.5em;
+  margin: 10px;
+  margin-bottom: 15px;
+  background-color: rgba(9, 9, 9, 0.5);
+  color: #ffffff;
+  border: 5px solid #ffffff;
+  box-shadow: 0 0 0 5px #ffffff;
+}
+.btn.btn-nope {
+  color: #e57368;
+  border-color: #e57368;
+}
+.btn.btn-info {
+  color: #76a7fa;
+  border-color: #76a7fa;
+}
+.btn.btn-yep {
+  color: #8bc474;
+  border-color: #8bc474;
 }
