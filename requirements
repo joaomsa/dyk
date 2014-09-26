@@ -1,6 +1,7 @@
 Flask==0.10.1
 Werkzeug==0.9.6
 beautifulsoup4==4.3.2
+invoke=0.9.0
 itsdangerous==0.24
 python-dateutil==2.2
 requests==2.4.1

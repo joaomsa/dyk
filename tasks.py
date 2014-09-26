@@ -5,11 +5,14 @@ from datetime import date
 from dateutil.relativedelta import relativedelta
 from bs4 import BeautifulSoup
 
-def scrape(start_date):
+from invoke import ctask as task, run, Collection
+
+@task
+def scrape_facts(ctx):
     proto = "http://"
     host = "en.wikipedia.org"
 
-    scrape_date = start_date
+    scrape_date = ctx["start_date"]
     today = date.today()
 
     facts = []
@@ -63,11 +66,22 @@ def scrape(start_date):
                 facts.append(obj)
 
         scrape_date += relativedelta(months=1)
-    return facts;
 
-if __name__ == "__main__":
-    # Archive from 2004
-    facts = scrape(date(2004, 02, 1))
-
-    with open("en_facts.json", "w") as f:
+    with open(ctx["facts_json"], "w") as f:
         json.dump(facts, f)
+
+@task
+def scrape_images(ctx):
+    pass
+
+scrape = Collection()
+scrape.add_task(scrape_facts, "facts")
+scrape.add_task(scrape_images, "images")
+
+ns = Collection()
+ns.add_collection(scrape, "scrape")
+ns.configure({
+    "start_date": date(2004, 02, 1), # Archive from 2004
+    "facts_json": "en_facts.json",
+    "images_json": "en_images.json"
+    })
